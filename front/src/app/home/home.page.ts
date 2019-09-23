@@ -3,6 +3,8 @@ import { DataService } from "../services/data.service";
 import { FormControl } from "@angular/forms";
 import { debounceTime } from "rxjs/operators";
 
+import { Item } from '../interfaces/item';
+
 @Component({
   selector: "app-home",
   templateUrl: "home.page.html",
@@ -11,21 +13,20 @@ import { debounceTime } from "rxjs/operators";
 export class HomePage implements OnInit {
   public searchTerm: string = '';
   public searchControl: FormControl;
-  public items: any;
-  public itemsLength: any;
-  public searching: any = false;
+  public items: Item[] = [];
+  public itemsLength: number;
+  public searching: boolean = false;
 
   constructor(private dataService: DataService) {
     this.searchControl = new FormControl();
   }
 
   ngOnInit() {
-    this.dataService.getData().subscribe(res => {
+    this.dataService.getData();
+    this.dataService.getDataEvent.subscribe(res => {
       this.items = res
       this.itemsLength = this.items.length
     })
-
-    this.setFilteredItems("");
 
     this.searchControl.valueChanges
       .pipe(debounceTime(700))
@@ -41,6 +42,5 @@ export class HomePage implements OnInit {
 
   setFilteredItems(searchTerm) {
     this.items = this.dataService.filterItems(searchTerm);
-    // this.itemsLength = this.items.length
   }
 }
