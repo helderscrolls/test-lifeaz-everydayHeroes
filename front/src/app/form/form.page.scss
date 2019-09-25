@@ -5,7 +5,18 @@ ion-header {
     margin: 0 auto;
   }
 }
+form {
+  ion-label {
+    margin-bottom: 10px !important;
+  }
+  
+  ion-button {
+    margin-top: 2%;
+  }
+}
 
-ion-label {
-  margin-bottom: 10px !important;
+@media (min-width: 1025px) {
+  .marginForm {
+    margin: 3% 10% 0;
+  }
 }

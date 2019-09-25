@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 
 import { DataService } from '../services/data.service';
+import { AlertService } from '../services/alert.service';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class FormPage implements OnInit {
   constructor(private fbuilder: FormBuilder,
     private dataService: DataService,
     private navCtrl: NavController,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -41,7 +43,7 @@ export class FormPage implements OnInit {
     console.log('Add Button clicked: ' + formData);
 
     this.dataService.postData(formData);
-
+    this.alertService.presentToast();
   }
 
 }

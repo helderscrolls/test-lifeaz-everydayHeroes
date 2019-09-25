@@ -1,5 +1,11 @@
 <ion-header>
   <ion-toolbar color="primary">
+    <ion-buttons slot="end">
+      <ion-button (click)="addTestimony()">
+        <ion-icon slot="icon-only" name="clipboard"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
     <ion-img class="img-logo" src="./assets/images/Logo-EH.png"></ion-img>
   </ion-toolbar>
 </ion-header>
@@ -12,12 +18,8 @@
 
   <div class="display-flex">
     <h5>Témoignages</h5>
-    
-    <ion-searchbar 
-      [formControl]="searchControl" 
-      (ionChange)="onSearchInput()" 
-      placeholder="Recherche"
-    ></ion-searchbar>
+
+    <ion-searchbar [formControl]="searchControl" (ionChange)="onSearchInput()" placeholder="Recherche"></ion-searchbar>
 
   </div>
   <hr class="hr-black">

@@ -68,6 +68,10 @@ ion-footer {
       display: flex;
       justify-content: flex-start;
       flex-wrap: nowrap;
+
+      ion-searchbar {
+        text-align: left;
+      }
     }
 
     .hr-black {

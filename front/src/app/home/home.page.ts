@@ -1,9 +1,12 @@
 import { Component, OnInit } from "@angular/core";
-import { DataService } from "../services/data.service";
 import { FormControl } from "@angular/forms";
+
 import { debounceTime } from "rxjs/operators";
 
+import { NavController } from '@ionic/angular';
+
 import { Item } from '../interfaces/item';
+import { DataService } from "../services/data.service";
 
 @Component({
   selector: "app-home",
@@ -17,7 +20,9 @@ export class HomePage implements OnInit {
   public itemsLength: number;
   public searching: boolean = false;
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService,
+    private navCtrl: NavController,
+    ) {
     this.searchControl = new FormControl();
   }
 
@@ -50,5 +55,9 @@ export class HomePage implements OnInit {
 
   setFilteredItems(searchTerm) {
     this.items = this.dataService.filterItems(searchTerm);
+  }
+
+  addTestimony() {
+    this.navCtrl.navigateForward('/form');
   }
 }
