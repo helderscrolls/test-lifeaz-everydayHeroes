@@ -17,9 +17,6 @@ export class FormPage implements OnInit {
 
   public testimonyForm: FormGroup;
 
-  public submitAttempt: boolean = false;
-
-
   constructor(private fbuilder: FormBuilder,
     private dataService: DataService,
     private navCtrl: NavController,
@@ -39,20 +36,16 @@ export class FormPage implements OnInit {
 
   dismissRegister() {
     this.navCtrl.navigateForward('/home');
+
   }
 
   onSubmit() {
 
-    this.submitAttempt = true;
+    let formData = this.testimonyForm.value;
+    console.log('Add Button clicked: ' + formData);
 
-    if (!this.testimonyForm.valid) {
-    } else {
-      let formData = this.testimonyForm.value;
-      console.log('Add Button clicked: ' + formData);
-
-      this.dataService.postData(formData);
-      this.alertService.presentToast();
-    }
+    this.dataService.postData(formData);
+    this.alertService.presentToast();
 
   }
 

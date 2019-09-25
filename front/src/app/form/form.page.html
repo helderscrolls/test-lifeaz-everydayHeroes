@@ -23,14 +23,14 @@
           <ion-label position="floating">Prénom</ion-label>
           <ion-input formControlName="firstName"
             [class.invalid]="!testimonyForm.controls.firstName.valid 
-            && (testimonyForm.controls['firstName'].dirty || submitAttempt)"
+              && (testimonyForm.controls['firstName'].dirty)"
           >
           </ion-input>
         </ion-item>
 
         <ion-item
           *ngIf="!testimonyForm.controls.firstName.valid  
-          && (testimonyForm.controls['firstName'].touched || submitAttempt)"
+            && (testimonyForm.controls['firstName'].touched)"
         >
           <p>Veuillez renseigner votre prénom.</p>
         </ion-item>
@@ -40,14 +40,14 @@
           <ion-label position="floating">Nom de famille</ion-label>
           <ion-input formControlName="lastName"
             [class.invalid]="!testimonyForm.controls.lastName.valid 
-            && (testimonyForm.controls['lastName'].dirty || submitAttempt)"
+              && (testimonyForm.controls['lastName'].dirty)"
           >
           </ion-input>
         </ion-item>
 
         <ion-item
           *ngIf="!testimonyForm.controls.lastName.valid  
-          && (testimonyForm.controls['lastName'].touched || submitAttempt)"
+            && (testimonyForm.controls['lastName'].touched)"
         >
           <p>Veuillez renseigner votre nom de famille.</p>
         </ion-item>
@@ -56,14 +56,14 @@
           <ion-label position="floating">Date</ion-label>
           <ion-input type="date" formControlName="date"
             [class.invalid]="!testimonyForm.controls.date.valid 
-            && (testimonyForm.controls['date'].dirty || submitAttempt)"
+              && (testimonyForm.controls['date'].dirty)"
           >
           </ion-input>
         </ion-item>
 
         <ion-item
           *ngIf="!testimonyForm.controls.date.valid  
-          && (testimonyForm.controls['date'].touched || submitAttempt)"
+            && (testimonyForm.controls['date'].touched)"
         >
           <p>Veuillez renseigner une date.</p>
         </ion-item>
@@ -72,14 +72,14 @@
           <ion-label position="floating">Message</ion-label>
           <ion-textarea type="text" formControlName="content"
             [class.invalid]="!testimonyForm.controls.content.valid 
-            && (testimonyForm.controls['content'].dirty || submitAttempt)"
+              && (testimonyForm.controls['content'].dirty)"
           >
           </ion-textarea>
         </ion-item>
 
         <ion-item
           *ngIf="!testimonyForm.controls.content.valid  
-          && (testimonyForm.controls['content'].touched || submitAttempt)"
+            && (testimonyForm.controls['content'].touched)"
         >
           <p>Veuillez renseigner votre témoignage.</p>
         </ion-item>
