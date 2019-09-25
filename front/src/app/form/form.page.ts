@@ -23,6 +23,11 @@ export class FormPage implements OnInit {
     private alertService: AlertService
   ) { }
 
+  ionViewWillEnter() {
+    this.ngOnInit();
+    
+  }
+  
   ngOnInit() {
     //initialize form
     this.testimonyForm = this.fbuilder.group({
@@ -36,17 +41,17 @@ export class FormPage implements OnInit {
 
   dismissRegister() {
     this.navCtrl.navigateForward('/home');
-
   }
 
   onSubmit() {
 
     let formData = this.testimonyForm.value;
-    console.log('Add Button clicked: ' + formData);
 
     this.dataService.postData(formData);
     this.alertService.presentToast();
 
   }
+
+
 
 }
