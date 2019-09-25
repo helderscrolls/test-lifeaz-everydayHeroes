@@ -5,6 +5,7 @@ ion-header {
     margin: 0 auto;
   }
 }
+
 form {
   ion-label {
     margin-bottom: 10px !important;
@@ -14,6 +15,18 @@ form {
     margin-top: 2%;
   }
 }
+
+/* Form Validation */
+
+p {
+  color: #ea6153;
+}
+
+ion-label, .select-text {
+  margin-left: 10px;
+}
+
+/* Desktop Media Query */
 
 @media (min-width: 1025px) {
   .marginForm {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 
 import { NavController } from '@ionic/angular';
@@ -15,7 +15,10 @@ import { AlertService } from '../services/alert.service';
 })
 export class FormPage implements OnInit {
 
-  form: FormGroup;
+  public testimonyForm: FormGroup;
+
+  public submitAttempt: boolean = false;
+
 
   constructor(private fbuilder: FormBuilder,
     private dataService: DataService,
@@ -25,11 +28,11 @@ export class FormPage implements OnInit {
 
   ngOnInit() {
     //initialize form
-    this.form = this.fbuilder.group({
-      firstName: '',
-      lastName: '',
-      date: '',
-      content: ''
+    this.testimonyForm = this.fbuilder.group({
+      firstName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+      lastName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+      date: ['', Validators.required],
+      content: ['', Validators.required]
     });
 
   }
@@ -39,11 +42,18 @@ export class FormPage implements OnInit {
   }
 
   onSubmit() {
-    let formData = this.form.value;
-    console.log('Add Button clicked: ' + formData);
 
-    this.dataService.postData(formData);
-    this.alertService.presentToast();
+    this.submitAttempt = true;
+
+    if (!this.testimonyForm.valid) {
+    } else {
+      let formData = this.testimonyForm.value;
+      console.log('Add Button clicked: ' + formData);
+
+      this.dataService.postData(formData);
+      this.alertService.presentToast();
+    }
+
   }
 
 }

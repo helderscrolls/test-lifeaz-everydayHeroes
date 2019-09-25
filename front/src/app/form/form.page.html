@@ -10,31 +10,87 @@
 
 <ion-content>
 
-  <form class="marginForm" [formGroup]="form" (ngSubmit)="onSubmit()" method="post">
+  <form 
+    class="marginForm" 
+    [formGroup]="testimonyForm" 
+    (ngSubmit)="onSubmit()" 
+    method="post"
+  >
 
     <ion-card>
       <ion-card-content>
         <ion-item>
           <ion-label position="floating">Prénom</ion-label>
-          <ion-input formControlName="firstName"></ion-input>
+          <ion-input formControlName="firstName"
+            [class.invalid]="!testimonyForm.controls.firstName.valid 
+            && (testimonyForm.controls['firstName'].dirty || submitAttempt)"
+          >
+          </ion-input>
         </ion-item>
+
+        <ion-item
+          *ngIf="!testimonyForm.controls.firstName.valid  
+          && (testimonyForm.controls['firstName'].touched || submitAttempt)"
+        >
+          <p>Veuillez renseigner votre prénom.</p>
+        </ion-item>
+
 
         <ion-item>
           <ion-label position="floating">Nom de famille</ion-label>
-          <ion-input formControlName="lastName"></ion-input>
+          <ion-input formControlName="lastName"
+            [class.invalid]="!testimonyForm.controls.lastName.valid 
+            && (testimonyForm.controls['lastName'].dirty || submitAttempt)"
+          >
+          </ion-input>
+        </ion-item>
+
+        <ion-item
+          *ngIf="!testimonyForm.controls.lastName.valid  
+          && (testimonyForm.controls['lastName'].touched || submitAttempt)"
+        >
+          <p>Veuillez renseigner votre nom de famille.</p>
         </ion-item>
 
         <ion-item>
           <ion-label position="floating">Date</ion-label>
-          <ion-input type="date" formControlName="date"></ion-input>
+          <ion-input type="date" formControlName="date"
+            [class.invalid]="!testimonyForm.controls.date.valid 
+            && (testimonyForm.controls['date'].dirty || submitAttempt)"
+          >
+          </ion-input>
+        </ion-item>
+
+        <ion-item
+          *ngIf="!testimonyForm.controls.date.valid  
+          && (testimonyForm.controls['date'].touched || submitAttempt)"
+        >
+          <p>Veuillez renseigner une date.</p>
         </ion-item>
 
         <ion-item>
           <ion-label position="floating">Message</ion-label>
-          <ion-textarea type="text" formControlName="content"></ion-textarea>
+          <ion-textarea type="text" formControlName="content"
+            [class.invalid]="!testimonyForm.controls.content.valid 
+            && (testimonyForm.controls['content'].dirty || submitAttempt)"
+          >
+          </ion-textarea>
         </ion-item>
 
-        <ion-button type="submit" expand="full" color="primary" (click)="dismissRegister()">
+        <ion-item
+          *ngIf="!testimonyForm.controls.content.valid  
+          && (testimonyForm.controls['content'].touched || submitAttempt)"
+        >
+          <p>Veuillez renseigner votre témoignage.</p>
+        </ion-item>
+
+        <ion-button 
+          type="submit" 
+          expand="full" 
+          color="primary" 
+          (click)="dismissRegister()"
+          [disabled]="testimonyForm.invalid"
+        >
           Postez votre témoignage
         </ion-button>
       </ion-card-content>
