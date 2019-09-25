@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
+
 import { NavController } from '@ionic/angular';
 
 import { DataService } from '../services/data.service';
@@ -33,7 +34,6 @@ export class FormPage implements OnInit {
 
   dismissRegister() {
     this.navCtrl.navigateForward('/home');
-
   }
 
   onSubmit() {

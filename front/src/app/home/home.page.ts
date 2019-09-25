@@ -21,11 +21,19 @@ export class HomePage implements OnInit {
     this.searchControl = new FormControl();
   }
 
+  // Refresh the data after submitting the form
+  ionViewWillEnter() {
+    this.ngOnInit();
+
+  }
+
   ngOnInit() {
     this.dataService.getData();
+    
     this.dataService.getDataEvent.subscribe(res => {
       this.items = res
       this.itemsLength = this.items.length
+      
     })
 
     this.searchControl.valueChanges

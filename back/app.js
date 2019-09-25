@@ -8,7 +8,7 @@ const app = express();
 
 // Middlewares
 app.use(morgan("dev"));
-app.use(cors({ origin: 'http://localhost:8100' }));
+app.use(cors({ origin: '*' }));
 
 // Body Parser configuration
 app.use(bodyParser.json())
