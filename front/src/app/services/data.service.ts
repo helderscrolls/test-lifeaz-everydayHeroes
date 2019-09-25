@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DataService {
   public items: any = [];
+  private API_URL = 'http://localhost:8200/';
 
   @Output()
   getDataEvent = new EventEmitter();
@@ -13,12 +14,19 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   getData() {
-    const url = 'http://localhost:8200/';
     //const json = '../../assets/data/dataMock.json';
-    this.http.get(url).subscribe(res => {
+    this.http.get(this.API_URL).subscribe(res => {
       this.items = res;
       this.getDataEvent.emit(res);
     });
+  }
+
+  postData(form) {
+    return this.http.post(this.API_URL, form)
+      .subscribe(
+        data => console.log("success!", data),
+        error => console.error("couldn't post because", error)
+      );
   }
 
   filterItems(searchTerm) {
