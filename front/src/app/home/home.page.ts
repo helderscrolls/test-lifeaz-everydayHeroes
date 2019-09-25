@@ -21,51 +21,51 @@ export class HomePage implements OnInit {
   public itemsLength: number;
   public searching: boolean = false;
 
-  
+
   constructor(private dataService: DataService,
     private navCtrl: NavController,
-    ) {
-      this.searchControl = new FormControl();
-    }
+  ) {
+    this.searchControl = new FormControl();
     
-    // Refresh the data after submitting the form
-    ionViewWillEnter() {
-      this.ngOnInit();
-      
-    }
+  }
 
+  // Refresh the data each time we Enter the Page (when comming from others pages)
+  ionViewWillEnter() {
+    this.ngOnInit();
 
-    
-    ngOnInit() {
-      this.dataService.getData();
-      
-      this.dataService.getDataEvent.subscribe(res => {
-        this.items = res
-        this.itemsLength = this.items.length
-        
-      })
-      
-      
-      this.searchControl.valueChanges
+  }
+
+  ngOnInit() {
+    this.dataService.getData();
+
+    this.dataService.getDataEvent.subscribe(res => {
+      this.items = res;
+      this.itemsLength = this.items.length;
+
+    })
+
+    this.searchControl.valueChanges
       .pipe(debounceTime(700))
       .subscribe(search => {
         this.searching = false;
         this.setFilteredItems(search);
       });
 
-    }
-    
-    onSearchInput() {
-      this.searching = true;
+  }
 
-    }
-    
-    setFilteredItems(searchTerm) {
-      this.items = this.dataService.filterItems(searchTerm);
-      
+  onSearchInput() {
+    this.searching = true;
+
+  }
+
+  setFilteredItems(searchTerm) {
+    this.items = this.dataService.filterItems(searchTerm);
+
   }
 
   addTestimony() {
     this.navCtrl.navigateRoot(['/form']);
+
   }
+
 }

@@ -25,14 +25,22 @@ export class FormPage implements OnInit {
 
   ionViewWillEnter() {
     this.ngOnInit();
-    
+
   }
-  
+
   ngOnInit() {
     //initialize form
     this.testimonyForm = this.fbuilder.group({
-      firstName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-      lastName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+      firstName: ['', Validators.compose([
+        Validators.maxLength(30), 
+        Validators.pattern('[a-zA-Z ]*'), 
+        Validators.required])],
+
+      lastName: ['', Validators.compose([
+        Validators.maxLength(30), 
+        Validators.pattern('[a-zA-Z ]*'), 
+        Validators.required])],
+
       date: ['', Validators.required],
       content: ['', Validators.required]
     });
@@ -41,10 +49,10 @@ export class FormPage implements OnInit {
 
   dismissRegister() {
     this.navCtrl.navigateForward('/home');
+    
   }
 
   onSubmit() {
-
     let formData = this.testimonyForm.value;
 
     this.dataService.postData(formData);
