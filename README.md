@@ -15,4 +15,4 @@ DB_NAME = SQL database name
 PORT = port you wish to use for your back
 ````
 
-# CORS is opened on all ports for testing purposes, please change it to your speficic front port before deploying online for security reasons.
+CORS is opened on all ports for testing purposes, please change it to your speficic front port before deploying it online, for security reasons.
