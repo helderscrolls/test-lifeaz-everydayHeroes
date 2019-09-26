@@ -16,3 +16,12 @@ PORT = port you wish to use for your back
 ````
 
 CORS is opened on all ports for testing purposes, please change it to your speficic front port before deploying it online, for security reasons.
+
+# Starting the back server (PORT=8200):
+```
+npm start
+`````
+
+# Starting the front server (PORT=8100):
+````
+ionic serve
